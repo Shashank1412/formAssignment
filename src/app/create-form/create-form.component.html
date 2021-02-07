@@ -1,0 +1,78 @@
+<form [formGroup]="createForm" (ngSubmit)="createUser()">
+  <div class="card-body">
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Create User</h4>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="createForm">Name
+            <span style="color: red;">*</span>
+          </label>
+          <input name="name" formControlName="name" type="text" class="form-control" placeholder="Enter Name"
+          [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name are required</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="createForm">Email
+            <span style="color: red;">*</span>
+          </label>
+          <input name="emailId" formControlName="emailId" type="text" class="form-control" placeholder="Enter Email"
+          [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }" />
+          <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+            <div *ngIf="f.emailId.errors.required">Email are required</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="createForm">Number
+            <span style="color: red;">*</span>
+          </label>
+          <input name="number" formControlName="number" type="number" class="form-control" placeholder="Enter Number"
+          [ngClass]="{ 'is-invalid': submitted && f.number.errors }" />
+          <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+            <div *ngIf="f.number.errors.required">Number are required</div>
+            <div *ngIf="f.number.errors?.pattern">Invalid Phone Number</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="createForm">Age
+            <span style="color: red;">*</span>
+          </label>
+          <input name="age" formControlName="dateOfBirth" type="date" class="form-control" placeholder="Enter age"   [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" />
+          <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
+            <div *ngIf="f.dateOfBirth.errors.required">Date of Birth are required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer small text-muted">
+    <div style="display: flow-root;">
+      <div class="float-right">
+        <button class="btn btn-success btn-sm mr-2" type="submit">
+          <span *ngIf="!editMode.status">Submit</span>
+          <span *ngIf="editMode.status">Update</span>
+        </button>
+        <button [routerLink]="redirectTo" class="btn btn-secondary btn-sm mr-2" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+</form>

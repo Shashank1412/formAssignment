@@ -1,0 +1,51 @@
+<div class="col-sm-3">
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Period</label>
+    <select class="form-control" [(ngModel)]="ageGroupFinder" [ngModelOptions]="{standalone: true}">
+      <option value="">Please select</option>
+      <option *ngFor="let age of ageGroup" [value]="age.id">
+        {{age.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-footer small text-muted">
+      <div style="display: flow-root;">
+        <div class="float-right">
+          <button class="btn btn-success btn-sm" (click)="submit()" type="button" style="margin-right: 15px;">Apply</button>
+          <button class="btn btn-warning btn-sm" (click)="reset()" type="button">Reset</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-success btn-sm mr-2" type="button" [routerLink]="['/form']">Create New User</button>
+    </div>
+    <br>
+    <div class="datatable table-responsive">
+      <div>
+        <div class="row mb-4">
+          <div class="col-sm-12" style="overflow-x: scroll;">
+            <table class="table table-bordered table-hover mb-0" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Number</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let record of createUserData">
+                  <td>{{record.id}}</td>
+                  <td>{{record.name}}</td>
+                  <td>{{record.emailId}}</td>
+                  <td>{{record.number}}</td>
+                  <td style="width: 3%;" [routerLink]="['/edit-form', record.id]" >
+                    <img src="assets/download.jpeg"  style="cursor: pointer;width: 38%;"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
